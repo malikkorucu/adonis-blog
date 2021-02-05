@@ -1,0 +1,30 @@
+@layout('main')
+@section('content')
+
+<div style="width:50%; margin:0 auto ; padding-top:20px">
+    <form action="/register" method="POST">
+        {{ csrfField() }}
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" name="email" value="{{old('email')}}">
+            {{ elIf('<small class="text-danger">$self</small>',getErrorFor('email') , hasErrorFor('email') )}}
+        </div>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" name="username" class="form-control" value="{{old('username')}}">
+            {{ elIf('<small class="text-danger">$self</small>',getErrorFor('username') , hasErrorFor('username') )}}
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" value="{{old('password')}}">
+            {{ elIf('<small class="text-danger">$self</small>',getErrorFor('password') , hasErrorFor('password') )}}
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+            <input type="password" name="confirmPassword" class="form-control" value="{{old('confirmPassword')}}">
+            {{ elIf('<small class="text-danger">$self</small>',getErrorFor('confirmPassword') , hasErrorFor('confirmPassword') )}}
+        </div>
+        <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+    </form>
+</div>
+@endsection

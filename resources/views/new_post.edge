@@ -1,0 +1,30 @@
+@layout('main')
+@section('content')
+
+<form action="/Blog/Save" method="POST">
+    {{ csrfField() }}
+    <div class="form-group">
+        <label for="title" class="form-label">Başlık</label>
+        <input type="text" name="title" id="title" class="form-control" value="{{old('title')}}">
+        {{ elIf('<small class="text-danger">$self</small>',getErrorFor('title') , hasErrorFor('title') )}}
+    </div>
+
+    <div class="form-group">
+        <label for="description" class="form-label mt-3">Blog Özeti</label>
+        <input type="text" id="description" name="description" class="form-control" value="{{old('description')}}">
+        {{ elIf('<small class="text-danger">$self</small>',getErrorFor('description') , hasErrorFor('description'))}}
+    </div>
+
+    <div class="form-group">
+        <label for="text" class="form-label mt-3">Blog Yazısı</label>
+        <textarea name="text" id="text" class="form-control" cols="30" rows="10" value="{{old('text')}}"></textarea>
+        {{ elIf('<small class="text-danger">$self</small>',getErrorFor('text') , hasErrorFor('text') )}}
+    </div>
+    <div>
+        <button class="btn btn-warning btn-block mt-3" type="submit">Kaydet</button>
+    </div>
+</form>
+
+
+
+@endsection

@@ -1,0 +1,19 @@
+@layout('main')
+@section('content')
+<div style="width:50%; margin:0 auto ; padding-top:20px">
+    <form action="/login" method="POST">
+        {{ csrfField() }}
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email" aria-describedby="emailHelp">
+            {{ elIf('<small class="text-danger">$self</small>',getErrorFor('email') , hasErrorFor('email') )}}
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+            {{ elIf('<small class="text-danger">$self</small>',getErrorFor('password') , hasErrorFor('password') )}}
+        </div>
+        <button type="submit" class="btn btn-primary">Giriş Yap</button>
+    </form>
+</div>
+@endsection
