@@ -81,7 +81,7 @@ class AuthController {
     newUser.email = body.email;
     newUser.password = body.password;
     await newUser.save();
-    await auth.attempt(newUser.email, body.password);
+    // await auth.attempt(newUser.email, newUser.password);
     session.flash({ notification: "Başarıyla kayıt olundu ve giriş yapıldı" });
     return response.redirect("/");
   }
